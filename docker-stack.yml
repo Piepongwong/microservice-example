@@ -2,13 +2,15 @@ version: "3.7"
 services:
 
   client:
-    image: piepongwong/countries-client
-    ports: 
-      - "80:80"
+    image: piepongwong/countries-client:latest
 
   api:
-      image: piepongwong/countries-api
-      ports:
-        - "8000:80"
+      image: piepongwong/countries-api:latest
       environment:
-        - PORT=80
+        - PORT=80  
+  
+  reverse-proxy:
+    image: piepongwong/reverse-proxy
+    ports:
+        - "80:80"
+        - "443:443"
